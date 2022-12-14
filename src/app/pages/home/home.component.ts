@@ -5,5 +5,43 @@ import {Component} from "@angular/core";
   templateUrl: './home.component.html'
 })
 export class HomeComponent{
+    className: string = 'T2210M';
+    numberOfStudents: number = 2;
+    textColor = 'text-primary';
+    categories: string[] = [
+      'Fashion','Watch','Shoes','Diamond'
+    ];
+    product: any = {
+      name: 'Iphone 14 pro max',
+      price: 29000000
+    };
 
+    products: any = [
+      {
+        name: 'Iphone 14 pro max',
+        price: 29000000,
+        qty: 10
+      },
+      {
+        name: 'Iphone 13 pro max',
+        price: 25000000,
+        qty: 0
+      },
+      {
+        name: 'Iphone 12 pro max',
+        price: 21000000,
+        qty: 5
+      }
+    ];
+
+    addStudent(){
+        this.numberOfStudents++;
+        this.textColor = 'text-primary';
+    }
+    removeStudent(){
+      if(this.numberOfStudents > 0)
+        this.numberOfStudents--;
+      if(this.numberOfStudents == 0)
+        this.textColor = 'text-danger';
+    }
 }
