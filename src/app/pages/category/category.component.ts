@@ -4,4 +4,7 @@ import {Component} from "@angular/core";
   selector: 'page-category',
   templateUrl: './category.component.html'
 })
-export class CategoryComponent{}
+export class CategoryComponent{
+  products: any = [];
+
+}

@@ -22,9 +22,10 @@
 <div class="row">
   <div class="col-3" *ngFor="let p of products">
     <div class="card">
+
       <img src="assets/images/1896224739.jpeg" class="img-fluid"/>
       <div class="card-body">
-        <h2>{{p.name}}</h2>
+        <h2><a routerLink="/product/{{p.id}}">{{p.name}}</a></h2>
         <p class="text-danger">{{p.price}}</p>
         <button *ngIf="p.qty > 0" type="button" class="btn btn-outline-primary">
           Add to cart

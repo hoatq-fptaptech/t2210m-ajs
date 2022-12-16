@@ -10,12 +10,13 @@ import { ProductComponent } from './pages/product/product.component';
 import {RouterModule, Routes} from "@angular/router";
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import {HttpClientModule} from "@angular/common/http";
 
 //1. khai bao danh sach cac routing
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'category', component: CategoryComponent},
-  { path: 'product', component: ProductComponent},
+  { path: 'product/:id', component: ProductComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
 ]
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
