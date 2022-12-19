@@ -18,4 +18,19 @@ export class ProductService{
      const url = Adapters.BASE_URL+ 'products/'+ id;
      return this.http.get<any>(url);
    }
+
+   getCategories(){
+     const url = Adapters.BASE_URL+ 'products/categories';
+     return this.http.get<any>(url);
+   }
+
+   getCategoryDetail(name: string){
+     const url = Adapters.BASE_URL+ 'products/category/'+name;
+     return this.http.get<any>(url);
+   }
+
+  searchProducts(name: string){
+    const url = Adapters.BASE_URL+ 'products/search?q='+name;
+    return this.http.get<any>(url);
+  }
 }

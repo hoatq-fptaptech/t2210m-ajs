@@ -11,6 +11,8 @@ import {RouterModule, Routes} from "@angular/router";
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import {HttpClientModule} from "@angular/common/http";
+import {SearchComponent} from "./pages/search/search.component";
+import {FormsModule} from "@angular/forms";
 
 //1. khai bao danh sach cac routing
 const appRoutes: Routes = [
@@ -19,16 +21,19 @@ const appRoutes: Routes = [
   { path: 'product/:id', component: ProductComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
+  { path: 'search', component: SearchComponent},
 ]
 @NgModule({
   declarations: [
     AppComponent,StudentComponent,ClassesComponent,
-    HomeComponent,CategoryComponent, ProductComponent, LoginComponent, RegisterComponent
+    HomeComponent,CategoryComponent, ProductComponent, LoginComponent, RegisterComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
