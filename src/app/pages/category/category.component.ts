@@ -1,5 +1,7 @@
 import {Component} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {Adapters} from "../../enums/adapters";
+import {ProductService} from "../../services/product.service";
 
 @Component({
   selector: 'page-category',
@@ -7,8 +9,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CategoryComponent{
   products: any = [];
-  limit: number = 10;
-  constructor(private http: HttpClient) {
+  limit: number = Adapters.LIMIT;
+  constructor(private productService: ProductService) {
   }
 
   ngOnInit(){
@@ -16,9 +18,8 @@ export class CategoryComponent{
   }
 
   getProducts(){
-    const url = 'https://dummyjson.com/products?limit='+this.limit;
-    this.http.get<any>(url).subscribe(data=>{
-      this.products = data.products;
+    this.productService.getProducts(this.limit).subscribe(data=>{
+        this.products = data.products;
     })
   }
 

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {Adapters} from "../../enums/adapters";
+import {ProductService} from "../../services/product.service";
 
 @Component({
   selector: 'app-product',
@@ -13,24 +15,23 @@ export class ProductComponent {
     id: 1,
     title: 'iPhone 9',
     price: 549,
-    thumbnail: 'https://i.dummyjson.com/data/products/1/thumbnail.jpg'
+    thumbnail: Adapters.BASE_URL+ 'data/products/1/thumbnail.jpg'
   }
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  constructor(private route: ActivatedRoute,
+              private productService: ProductService) {
   }
-
   ngOnInit(){
     this.route.params.subscribe(params=>{
       this.id = params['id'];
       this.getProduct();
     })
   }
-
   /// call API:  https://dummyjson.com/products/ + this.id
   getProduct(){
     // call api
-    const url = 'https://dummyjson.com/products/'+this.id;
-    this.http.get<any>(url).subscribe(data=>{
+    this.productService.getProductDetail(this.id)
+      .subscribe(data=>{
       // set data to product
       this.product = data;
     })
